@@ -12,7 +12,8 @@ public class AddressBookMain {
         while(true){
             System.out.println("Choose an option: ");
             System.out.println("1. Add Contact");
-            System.out.println("2. Quit");
+            System.out.println("2. Edit Contact");
+            System.out.println("3. Quit");
             String option = sc.nextLine();
 
             switch(option){
@@ -20,6 +21,9 @@ public class AddressBookMain {
                     addressBook.addContact(sc);
                     break;
                 case "2":
+                    addressBook.editContact(sc);
+                    break;
+                case "3":
                     System.out.println("Exiting Address Book Program");
                     return;
                 default:

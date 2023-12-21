@@ -34,4 +34,36 @@ public class AddressBook {
         System.out.println("Contact added successfully!");
     }
 
+    public void editContact(Scanner scanner) {
+        System.out.print("Enter the first name of the contact to edit: ");
+        String firstName = scanner.nextLine();
+        System.out.print("Enter the last name of the contact to edit: ");
+        String lastName = scanner.nextLine();
+        String key = formatKey(firstName, lastName); // format key
+
+        if (contacts.containsKey(key)) {
+            Contact contact = contacts.get(key);
+
+            System.out.print("Enter new first name: ");
+            contact.setFirstName(scanner.nextLine());
+            System.out.print("Enter new last name: ");
+            contact.setLastName(scanner.nextLine());
+            System.out.print("Enter new address: ");
+            contact.setAddress(scanner.nextLine());
+            System.out.print("Enter new city: ");
+            contact.setCity(scanner.nextLine());
+            System.out.print("Enter new state: ");
+            contact.setState(scanner.nextLine());
+            System.out.print("Enter new zip: ");
+            contact.setZip(Integer.parseInt(scanner.nextLine()));
+            System.out.print("Enter new phone number: ");
+            contact.setPhoneNumber(Long.parseLong(scanner.nextLine()));
+            System.out.print("Enter new email: ");
+            contact.setEmail(scanner.nextLine());
+            System.out.println("Contact updated successfully!");
+        } else {
+            System.out.println("Contact not found!");
+        }
+    }
+
 }
