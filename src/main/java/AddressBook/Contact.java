@@ -1,11 +1,11 @@
 package AddressBook;
 
 public class Contact {
-    String firstName, lastName, address, city, state, email;
+    String firstName, lastName, address, city, state, email; // attributes
     int zip;
     long phoneNumber;
 
-    public Contact(String firstName, String lastName, String address, String city, String state, int zip, long phoneNumber, String email) {
+    public Contact(String firstName, String lastName, String address, String city, String state, int zip, long phoneNumber, String email) { // constructor
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;
@@ -17,7 +17,7 @@ public class Contact {
     }
 
     // Getters
-    public String getFirstName() { return firstName; }
+    public String getFirstName() { return firstName; } // getter method - returning the value of the attribute
     public String getLastName() { return lastName; }
 
     public String getAddress() { return address; }
@@ -33,7 +33,7 @@ public class Contact {
     public String getEmail() { return email; }
 
     // Setters
-    public void setFirstName(String firstName) { this.firstName = firstName; }
+    public void setFirstName(String firstName) { this.firstName = firstName; } // this keyword refers to the current object
     public void setLastName(String lastName) { this.lastName = lastName; }
 
     public void setAddress(String address) { this.address = address; }
@@ -47,7 +47,7 @@ public class Contact {
     public void setPhoneNumber(long phoneNumber) { this.phoneNumber = phoneNumber; }
     public void setEmail(String email) { this.email = email; }
 
-    @Override
+    @Override // Override toString() method
     public String toString() {
         return "Contact: " + firstName + " " + lastName + ", Address: " + address + ", City: " + city + ", State: " + state + ", Zip: " + zip + ", Phone: " + phoneNumber + ", Email: " + email;
     }
