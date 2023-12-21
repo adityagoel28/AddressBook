@@ -66,4 +66,29 @@ public class AddressBook {
         }
     }
 
+    public void deleteContact(Scanner scanner) {
+        System.out.print("Enter the first name of the contact to delete: ");
+        String firstName = scanner.nextLine();
+        System.out.print("Enter the last name of the contact to delete: ");
+        String lastName = scanner.nextLine();
+        String key = formatKey(firstName, lastName);
+
+        if (contacts.containsKey(key)) {
+            contacts.remove(key);
+            System.out.println("Contact deleted successfully!");
+        } else {
+            System.out.println("Contact not found!");
+        }
+    }
+
+    public void displayAllContacts() {
+        if (contacts.isEmpty()) {
+            System.out.println("No contacts in the address book.");
+            return;
+        }
+        for (Contact contact : contacts.values()) {
+            System.out.println(contact);
+        }
+    }
+
 }
