@@ -65,7 +65,9 @@ public class AddressBookMain {
             System.out.println("6. Display Contacts (Sorted by City)");
             System.out.println("7. Display Contacts (Sorted by State)");
             System.out.println("8. Display Contacts (Sorted by Zip)");
-            System.out.println("9. Return to Main Menu");
+            System.out.println("9. Save Contacts to File");
+            System.out.println("10. Load Contacts from File");
+            System.out.println("11. Return to Main Menu");
 
             String option = sc.nextLine();
 
@@ -95,6 +97,12 @@ public class AddressBookMain {
                     displayContactsSortedByZip(addressBook);
                     break;
                 case "9":
+                    addressBook.saveToFile("contacts.txt");
+                    break;
+                case "10":
+                    displayContactsFromFile("contacts.txt", addressBook);
+                    break;
+                case "11":
                     return;
                 default:
                     System.out.println("Invalid option! Please enter a number between 1 and 5.");
@@ -174,5 +182,9 @@ public class AddressBookMain {
         } else {
             sortedContacts.forEach(System.out::println);
         }
+    }
+
+    public static void displayContactsFromFile(String filename, AddressBook addressBook) {
+        addressBook.loadFromFile(filename);
     }
 }
