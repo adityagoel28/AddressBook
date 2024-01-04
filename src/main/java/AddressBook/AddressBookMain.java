@@ -61,7 +61,8 @@ public class AddressBookMain {
             System.out.println("2. Edit Contact");
             System.out.println("3. Delete Contact");
             System.out.println("4. Display Contacts");
-            System.out.println("5. Return to Main Menu");
+            System.out.println("5. Display Contacts (Sorted by Name)");
+            System.out.println("6. Return to Main Menu");
 
             String option = sc.nextLine();
 
@@ -79,6 +80,9 @@ public class AddressBookMain {
                     addressBook.displayAllContacts();
                     break;
                 case "5":
+                    displaySortedContacts(addressBook);
+                    break;
+                case "6":
                     return;
                 default:
                     System.out.println("Invalid option! Please enter a number between 1 and 5.");
@@ -122,5 +126,14 @@ public class AddressBookMain {
     private static void countPersonsByState(AddressBookManager manager, String state) {
         long count = manager.countPersonsInStateAcrossBooks(state);
         System.out.println("Number of contacts in " + state + ": " + count);
+    }
+
+    private static void displaySortedContacts(AddressBook addressBook) {
+        List<Contact> sortedContacts = addressBook.getSortedContactsByName();
+        if (sortedContacts.isEmpty()) {
+            System.out.println("No contacts to display.");
+        } else {
+            sortedContacts.forEach(System.out::println);
+        }
     }
 }

@@ -118,5 +118,10 @@ public class AddressBook {
         return (contactsInState != null) ? contactsInState.size() : 0;
     }
 
-
+    public List<Contact> getSortedContactsByName() {
+        return contacts.values().stream()
+                .sorted(Comparator.comparing(Contact::getFirstName)
+                        .thenComparing(Contact::getLastName))
+                .collect(Collectors.toList());
+    }
 }
