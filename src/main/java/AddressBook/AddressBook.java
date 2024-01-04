@@ -124,4 +124,22 @@ public class AddressBook {
                         .thenComparing(Contact::getLastName))
                 .collect(Collectors.toList());
     }
+
+    public List<Contact> getContactsSortedByCity() {
+        return contacts.values().stream()
+                .sorted(Comparator.comparing(Contact::getCity))
+                .collect(Collectors.toList());
+    }
+
+    public List<Contact> getContactsSortedByState() {
+        return contacts.values().stream()
+                .sorted(Comparator.comparing(Contact::getState))
+                .collect(Collectors.toList());
+    }
+
+    public List<Contact> getContactsSortedByZip() {
+        return contacts.values().stream()
+                .sorted(Comparator.comparingInt(Contact::getZip))
+                .collect(Collectors.toList());
+    }
 }

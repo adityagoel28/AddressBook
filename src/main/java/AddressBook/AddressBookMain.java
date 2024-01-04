@@ -62,7 +62,10 @@ public class AddressBookMain {
             System.out.println("3. Delete Contact");
             System.out.println("4. Display Contacts");
             System.out.println("5. Display Contacts (Sorted by Name)");
-            System.out.println("6. Return to Main Menu");
+            System.out.println("6. Display Contacts (Sorted by City)");
+            System.out.println("7. Display Contacts (Sorted by State)");
+            System.out.println("8. Display Contacts (Sorted by Zip)");
+            System.out.println("9. Return to Main Menu");
 
             String option = sc.nextLine();
 
@@ -83,6 +86,15 @@ public class AddressBookMain {
                     displaySortedContacts(addressBook);
                     break;
                 case "6":
+                    displayContactsSortedByCity(addressBook);
+                    break;
+                case "7":
+                    displayContactsSortedByState(addressBook);
+                    break;
+                case "8":
+                    displayContactsSortedByZip(addressBook);
+                    break;
+                case "9":
                     return;
                 default:
                     System.out.println("Invalid option! Please enter a number between 1 and 5.");
@@ -130,6 +142,33 @@ public class AddressBookMain {
 
     private static void displaySortedContacts(AddressBook addressBook) {
         List<Contact> sortedContacts = addressBook.getSortedContactsByName();
+        if (sortedContacts.isEmpty()) {
+            System.out.println("No contacts to display.");
+        } else {
+            sortedContacts.forEach(System.out::println);
+        }
+    }
+
+    private static void displayContactsSortedByCity(AddressBook addressBook) {
+        List<Contact> sortedContacts = addressBook.getContactsSortedByCity();
+        if (sortedContacts.isEmpty()) {
+            System.out.println("No contacts to display.");
+        } else {
+            sortedContacts.forEach(System.out::println);
+        }
+    }
+
+    private static void displayContactsSortedByState(AddressBook addressBook) {
+        List<Contact> sortedContacts = addressBook.getContactsSortedByState();
+        if (sortedContacts.isEmpty()) {
+            System.out.println("No contacts to display.");
+        } else {
+            sortedContacts.forEach(System.out::println);
+        }
+    }
+
+    private static void displayContactsSortedByZip(AddressBook addressBook) {
+        List<Contact> sortedContacts = addressBook.getContactsSortedByZip();
         if (sortedContacts.isEmpty()) {
             System.out.println("No contacts to display.");
         } else {
