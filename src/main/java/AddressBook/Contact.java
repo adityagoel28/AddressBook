@@ -1,5 +1,7 @@
 package AddressBook;
 
+import java.util.Objects;
+
 public class Contact {
     String firstName, lastName, address, city, state, email; // attributes
     int zip;
@@ -34,6 +36,7 @@ public class Contact {
 
     // Setters
     public void setFirstName(String firstName) { this.firstName = firstName; } // this keyword refers to the current object
+
     public void setLastName(String lastName) { this.lastName = lastName; }
 
     public void setAddress(String address) { this.address = address; }
@@ -45,10 +48,25 @@ public class Contact {
     public void setZip(int zip) { this.zip = zip; }
 
     public void setPhoneNumber(long phoneNumber) { this.phoneNumber = phoneNumber; }
+    
     public void setEmail(String email) { this.email = email; }
 
     @Override // Override toString() method
     public String toString() {
         return "Contact: " + firstName + " " + lastName + ", Address: " + address + ", City: " + city + ", State: " + state + ", Zip: " + zip + ", Phone: " + phoneNumber + ", Email: " + email;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Contact contact = (Contact) o;
+        return Objects.equals(firstName, contact.firstName) &&
+                Objects.equals(lastName, contact.lastName);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(firstName, lastName);
     }
 }
