@@ -1,7 +1,9 @@
 package AddressBook;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class AddressBookManager {
     private Map<String, AddressBook> addressBookMap;
@@ -36,5 +38,17 @@ public class AddressBookManager {
 
     public boolean addressBookExists(String name) {
         return addressBookMap.containsKey(name);
+    }
+
+    public List<Contact> searchPersonInCity(String city) {
+        return addressBookMap.values().stream()
+                .flatMap(addressBook -> addressBook.searchByCity(city).stream())
+                .collect(Collectors.toList());
+    }
+
+    public List<Contact> searchPersonInState(String state) {
+        return addressBookMap.values().stream()
+                .flatMap(addressBook -> addressBook.searchByState(state).stream())
+                .collect(Collectors.toList());
     }
 }
