@@ -89,7 +89,7 @@ public class AddressBookMain {
     private static void searchPersonsByCity(AddressBookManager manager, Scanner sc) {
         System.out.print("Enter city: ");
         String city = sc.nextLine();
-        List<Contact> contactsInCity = manager.searchPersonInCity(city);
+        List<Contact> contactsInCity = manager.searchPersonsInCityAcrossBooks(city);
         if (contactsInCity.isEmpty()) {
             System.out.println("No contacts found in " + city);
         } else {
@@ -101,7 +101,7 @@ public class AddressBookMain {
     private static void searchPersonsByState(AddressBookManager manager, Scanner sc) {
         System.out.print("Enter state: ");
         String state = sc.nextLine();
-        List<Contact> contactsInState = manager.searchPersonInState(state);
+        List<Contact> contactsInState = manager.searchPersonsInStateAcrossBooks(state);
         if (contactsInState.isEmpty()) {
             System.out.println("No contacts found in " + state);
         } else {

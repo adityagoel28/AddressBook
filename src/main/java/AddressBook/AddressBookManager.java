@@ -40,15 +40,16 @@ public class AddressBookManager {
         return addressBookMap.containsKey(name);
     }
 
-    public List<Contact> searchPersonInCity(String city) {
+    public List<Contact> searchPersonsInCityAcrossBooks(String city) {
         return addressBookMap.values().stream()
-                .flatMap(addressBook -> addressBook.searchByCity(city).stream())
+                .flatMap(ab -> ab.searchContactsByCity(city).stream())
                 .collect(Collectors.toList());
     }
 
-    public List<Contact> searchPersonInState(String state) {
+    public List<Contact> searchPersonsInStateAcrossBooks(String state) {
         return addressBookMap.values().stream()
-                .flatMap(addressBook -> addressBook.searchByState(state).stream())
+                .flatMap(ab -> ab.searchContactsByState(state).stream())
                 .collect(Collectors.toList());
     }
+
 }

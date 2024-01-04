@@ -5,6 +5,8 @@ import java.util.stream.Collectors;
 
 public class AddressBook {
     private Map<String, Contact> contacts = new HashMap<>();
+    private Map<String, List<Contact>> cityToContacts = new HashMap<>();
+    private Map<String, List<Contact>> stateToContacts = new HashMap<>();
 
     private String formatKey(String firstName, String lastName) {
         return firstName.toLowerCase() + "_" + lastName.toLowerCase(); // key format, converts to lowercase string and concatenates with underscore
@@ -33,6 +35,8 @@ public class AddressBook {
         Contact newContact = new Contact(firstName, lastName, address, city, state, zip, phoneNumber, email); // create new contact
         if (!contacts.containsKey(key)) {
             contacts.put(key, newContact);
+            cityToContacts.computeIfAbsent(city, k -> new ArrayList<>()).add(newContact);
+            stateToContacts.computeIfAbsent(state, k -> new ArrayList<>()).add(newContact);
             System.out.println("Contact added successfully!");
         } else {
             System.out.println("Contact already exists.");
@@ -96,15 +100,12 @@ public class AddressBook {
         }
     }
 
-    public List<Contact> searchByCity(String city) {
-        return contacts.values().stream()
-                .filter(contact -> contact.getCity().equalsIgnoreCase(city))
-                .collect(Collectors.toList());
+    public List<Contact> searchContactsByCity(String city) {
+        return cityToContacts.getOrDefault(city, Collections.emptyList()); // returns empty list if no contacts found
     }
 
-    public List<Contact> searchByState(String state) {
-        return contacts.values().stream()
-                .filter(contact -> contact.getState().equalsIgnoreCase(state))
-                .collect(Collectors.toList());
+    public List<Contact> searchContactsByState(String state) {
+        return stateToContacts.getOrDefault(state, Collections.emptyList());
     }
+
 }
