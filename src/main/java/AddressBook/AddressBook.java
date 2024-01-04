@@ -1,6 +1,7 @@
 package AddressBook;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class AddressBook {
     private Map<String, Contact> contacts = new HashMap<>();
@@ -95,4 +96,15 @@ public class AddressBook {
         }
     }
 
+    public List<Contact> searchByCity(String city) {
+        return contacts.values().stream()
+                .filter(contact -> contact.getCity().equalsIgnoreCase(city))
+                .collect(Collectors.toList());
+    }
+
+    public List<Contact> searchByState(String state) {
+        return contacts.values().stream()
+                .filter(contact -> contact.getState().equalsIgnoreCase(state))
+                .collect(Collectors.toList());
+    }
 }
