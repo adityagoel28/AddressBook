@@ -30,8 +30,12 @@ public class AddressBook {
         String key = formatKey(firstName, lastName);
 
         Contact newContact = new Contact(firstName, lastName, address, city, state, zip, phoneNumber, email); // create new contact
-        contacts.put(key, newContact);
-        System.out.println("Contact added successfully!");
+        if (!contacts.containsKey(key)) {
+            contacts.put(key, newContact);
+            System.out.println("Contact added successfully!");
+        } else {
+            System.out.println("Contact already exists.");
+        }
     }
 
     public void editContact(Scanner scanner) {
