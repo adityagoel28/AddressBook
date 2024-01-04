@@ -52,4 +52,15 @@ public class AddressBookManager {
                 .collect(Collectors.toList());
     }
 
+    public long countPersonsInCityAcrossBooks(String city) {
+        return addressBookMap.values().stream()
+                .mapToLong(addressBook -> addressBook.countContactsByCity(city))
+                .sum();
+    }
+
+    public long countPersonsInStateAcrossBooks(String state) {
+        return addressBookMap.values().stream()
+                .mapToLong(addressBook -> addressBook.countContactsByState(state))
+                .sum();
+    }
 }

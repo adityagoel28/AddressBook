@@ -96,6 +96,8 @@ public class AddressBookMain {
             System.out.println("Contacts in " + city + ":");
             contactsInCity.forEach(System.out::println);
         }
+        // calling countPersonsByCity
+        countPersonsByCity(manager, city);
     }
 
     private static void searchPersonsByState(AddressBookManager manager, Scanner sc) {
@@ -108,5 +110,17 @@ public class AddressBookMain {
             System.out.println("Contacts in " + state + ":");
             contactsInState.forEach(System.out::println);
         }
+        // calling countPersonsByState
+        countPersonsByState(manager, state);
+    }
+
+    private static void countPersonsByCity(AddressBookManager manager, String city) {
+        long count = manager.countPersonsInCityAcrossBooks(city);
+        System.out.println("Number of contacts in " + city + ": " + count);
+    }
+
+    private static void countPersonsByState(AddressBookManager manager, String state) {
+        long count = manager.countPersonsInStateAcrossBooks(state);
+        System.out.println("Number of contacts in " + state + ": " + count);
     }
 }

@@ -108,4 +108,15 @@ public class AddressBook {
         return stateToContacts.getOrDefault(state, Collections.emptyList());
     }
 
+    public long countContactsByCity(String city) {
+        List<Contact> contactsInCity = cityToContacts.get(city);
+        return (contactsInCity != null) ? contactsInCity.size() : 0;
+    }
+
+    public long countContactsByState(String state) {
+        List<Contact> contactsInState = stateToContacts.get(state);
+        return (contactsInState != null) ? contactsInState.size() : 0;
+    }
+
+
 }
